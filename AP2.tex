@@ -96,11 +96,11 @@ $$
 $$
 By continuity of probability, for any increasing sequence of events such that $A_j \subseteq A_{j+1}$, we have that
 $$
-\pr(\bigcup^\infty_{j=1}A_j) = \lim_{j\rightarrow\infty} \pr(A_j)
+\pr\left(\bigcup^\infty_{j=1}A_j\right) = \lim_{j\rightarrow\infty} \pr(A_j)
 $$
 So, finally,
 $$
-e=\pr(\bigcup^\infty_{j=1}\{N_j=0\}) = \lim_{j\rightarrow\infty} \pr(N_j=0) = \lim_{j\rightarrow\infty}e_j
+e=\pr\left(\bigcup^\infty_{j=1}\{N_j=0\}\right) = \lim_{j\rightarrow\infty} \pr(N_j=0) = \lim_{j\rightarrow\infty}e_j
 $$
 $$
 e=\lim_{j\rightarrow\infty}e_j
@@ -108,9 +108,9 @@ $$
 \item
 $G_X(s) = \sum\limits_{x \in \mathcal{X}}\pr(X=i)s^i$, so, $G_X(0) = \pr(X=0)$. We also have that $G_j(G_1(s)) = G_1(G_j(s))$.
 \begin{align*}
-e &= lim_{j\rightarrow\infty}G_j(0)\\
-&= lim_{j\rightarrow\infty}G_1(G_{j-1}(0))\mbox{\;\; by continuity of G}\\
-&= G_1(lim_{j\rightarrow\infty}G_{j-1}(0))\\
+e &= \lim_{j\rightarrow\infty}G_j(0)\\
+&= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0))\mbox{\;\; by continuity of G}\\
+&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\\
 &= G_1(e)
 \end{align*}
 So $e = G_1(e)$.
