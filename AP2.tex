@@ -1,5 +1,9 @@
 \documentclass{article}
 
+%WELCOME, ONE AND ALL, TO THE WORST LATEX CODE IN THE UNIVERSE
+
+%My Haskell's prettier, honest...
+
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
@@ -49,14 +53,14 @@
 
 Like, seriously, loads of them. No I do not know where they are. These attempts at solutions are in no way guaranteed to be accurate. Please do not read this and assume that you're totally correct/incorrect just because you agree/disagree with the stuff that's written in the big shiny \LaTeX \,document. Rather, think as you read through it. Follow my logic, and if it doesn't make sense to you then ask me. Email me\footnotetext[1]{\url{ymbirtt@gmail.com}}\footnotemark[1], grab me on Steam, Skype, League of Legends\footnotetext[2]{Ymbirtt on all}\footnotemark[2], facebook, bang on my front door repeatedly\footnotetext[3]{Bring enough cake for me and my flatmates}\footnotemark[3], just ask if something doesn't make sense, because I can and do make errors.
 
-Of course, if you know what the error is and how to fix it, then feel free to write up an alternative solution of your own, or even an entire solution to a problem that I haven't yet attempted. I'll be happy to include it and give you credit for writing it. Either write it on paper, scan it to me, and email me\footnotemark[1], or for bonus points send me correct \LaTeX\, that I can just copy paste in, or for super bonus points, fork me on github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II}}\footnotemark[4] and push a revision at me.
+Of course, if you know what the error is and how to fix it, then feel free to write up an alternative solution of your own, or even an entire solution to a problem that I haven't yet attempted. I'll be happy to include it and give you credit for writing it. Either write it on paper, scan it, and email me\footnotemark[1], or for bonus points send me correct \LaTeX\, that I can just copy paste in, or for super bonus points, fork me on github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II}}\footnotemark[4] and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don't be a dick, and please be a massive dick so I can ban you.
 
-This document does have a habit of just stating answers without much explanation. For my contributions, I'm effectively just typing up the solutions that I have written on paper (because \LaTeX sucks), which were written whilst the exam paper was in front of me. As such a lot of this won't make any sense at all if you don't have the relevant exam paper in front of you. 
+This document does have a habit of just stating answers without much explanation. For my contributions, I'm effectively just typing up the solutions that I have written on paper (because \LaTeX sucks), which were written whilst the exam paper was in front of me. As such a lot of this won't make any sense at all if you don't have the relevant exam paper in front of you. Also, the links won't work in the dropbox version. Sorry about that. If you're REALLY desperate to have clickable links, just download it. 
 
 Right, now that that's all out of the way, let's do some maths.
 
 \clearpage
-\section*{2011 paper}
+\section*{2011 paper, \url{http://bit.ly/KChGKp}}
 \begin{enumerate}
 \item
 \begin{enumerate}
@@ -115,17 +119,33 @@ So $e = G_1(e)$.
 \begin{enumerate}
 \item
 \begin{align*}
-\mathbb{E}(X) &= \frac{d}{ds}G_X(s)|_{s=0}\\
+\mathbb{E}(X) &= \frac{d}{ds}G_X(s)|_{s=1}\\
 \\
 G_j(s) &= G_{j-1}(G(s))\\
-\mathbb{E}(N_j) &= \frac{d}{ds}G_j(s)|_{s=0}\\
-&= \frac{d}{ds}G_{j-1}(G_1(s))|_{s=0}\\
-&= G_1'(s)G_{j-1}'(G_1(s))|_{s=0}\\
-&= \mu G_{j-1}'(G_1(0)) \\
-&= \mu G_{j-1}'(0) \mbox{\; \; since $G_1(0)=\pr(X_1=0) = 0$} \\
+\mathbb{E}(N_j) &= \frac{d}{ds}G_j(s)|_{s=1}\\
+&= \frac{d}{ds}G_{j-1}(G_1(s))|_{s=1}\\
+&= G_1'(s)G_{j-1}'(G_1(s))|_{s=1}\\
+&= \mu G_{j-1}'(G_1(1)) \\
+&= \mu G_{j-1}'(1) \mbox{\; \; since $G_X(1)=1$ for any rv $X$} \\
 &= \mu \mathbb{E}(N_{j-i})
 \end{align*}
 So, $\mathbb{E}(N_1) = \mu$ and $\mathbb{E}(N_j) = \mu \mathbb{E}(N_{j-1})$. Induction will then give us that $\mathbb{E}(N_j) = \mu^j$.
+
+\item
+From the properties of the generating function, we have that $Var(X) = G''_X(1)-\mu+\mu^2$.
+\begin{align*}
+G_j''(s) &= \frac{d}{ds} G_j'(s)\\
+&= \frac{d}{ds} \left[ G'_1(s)G'_{j-1}(G_1(s))\right]\\
+&= G_1''(s)G_{j-1}'(G(s)) + G_1'(s)^2G_{j-1}''(G(s))\\
+G_j''(1) &= (Var(N_{j-1})-\mu^{j-1}+\mu^{2j-2})\mu^2+\mu^{j-1}(\sigma^2-\mu+\mu^2)\\
+&=\mu^2Var(N_{j-1})+\mu^{2j}-\mu^j+\mu^{j-1}\sigma^2\\
+Var(N_j) &= G_j''(1)-\mu^{2j}+\mu^j\\
+&= \mu^2Var(N_{j-1})+\mu^{j-1}\sigma^2
+\end{align*}
+Induction will then show that for $\mu \neq 1$,
+$$
+Var(N_j) = \frac{\sigma^2\mu^{j-1}(\mu^j-1)}{\mu-1}
+$$
 \end{enumerate}
 
 \end{enumerate}
@@ -153,6 +173,7 @@ And, where $n=0$, $p_{-1}(t) = 0$, so
 $$
 p_0'(t) = -\lambda p_0(t)
 $$
+\begin{enumerate}
 \item
 Let $p_n(t) = \pr(N(t) = n)$, as per usual.
 \begin{align*}
@@ -163,7 +184,9 @@ p_n(t+h) &= \pr(N(t+h) = n | N(t) = n)\pr(N(t)=n) + \pr(N(t+h)=n|N(t)=n-1)\pr(N(
 &= p_n(t)-\mu h p p_n(t) + \mu h p p_{n-1}(t) +o(h)
 \end{align*}
 If we let $\lambda = \mu p$, exactly the same argument as before holds, so $N(t) \sim Po(\mu p t)$, and $\mathbb{E}(N(t)) = \mu p t$ by properties of the poisson.
-
+\item
+I actually have no idea how to approach this. Any takers?
+\end{enumerate}
 \end{enumerate}
 \clearpage
 \item 
@@ -271,6 +294,12 @@ At time $T$, $S_T = -4$, so $\mathbb{E}(S_T) = -4$. We also have that $\mathbb{E
 \implies \mathbb{E}(T) = 7
 \end{align*}
 \end{enumerate}
+\begin{enumerate}
+\item
+
+\item Again, not sure on this one. I note that $\frac{240}{255} = \frac{2^8-2^4}{2^8-2^0}$, which could be handy since we're dealing with powers of 2, but beyond that I don't know how to approach it. Contribute! Be bold!
+\end{enumerate}
+
 \end{enumerate}
 \clearpage
 \item
