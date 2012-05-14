@@ -6,6 +6,7 @@
 
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage[ampmtime]{datetime}
 \usepackage{fancyhdr}
 \usepackage{semantic}
 \usepackage[noload]{qtree}
@@ -41,8 +42,7 @@
 \newcommand{\assume}[1]{$\blacklozenge$ #1}
 \newcommand{\st}{\,\; st \,\;}
 \newcommand{\pr}{\mathbb{P}}
-%\newcommand{\iff}{\Rightleftarrow}
-%\newcommand{\implies}{\Rightarrow}
+
 
 \begin{center}
 	\Huge{CAVEAT LECTOR:}
@@ -50,12 +50,14 @@
 \begin{center}
 	\Large{THIS DOCUMENT CONTAINS ERRORS}
 \end{center}
-
+\begin{center}
+Last update was on \date at \currenttime-ish
+\end{center}
 Like, seriously, loads of them. No I do not know where they are. These attempts at solutions are in no way guaranteed to be accurate. Please do not read this and assume that you're totally correct/incorrect just because you agree/disagree with the stuff that's written in the big shiny \LaTeX \,document. Rather, think as you read through it. Follow my logic, and if it doesn't make sense to you then ask me. Email me\footnotetext[1]{\url{ymbirtt@gmail.com}}\footnotemark[1], grab me on Steam, Skype, League of Legends\footnotetext[2]{Ymbirtt on all}\footnotemark[2], facebook, bang on my front door repeatedly\footnotetext[3]{Bring enough cake for me and my flatmates}\footnotemark[3], just ask if something doesn't make sense, because I can and do make errors.
 
-Of course, if you know what the error is and how to fix it, then feel free to write up an alternative solution of your own, or even an entire solution to a problem that I haven't yet attempted. I'll be happy to include it and give you credit for writing it. Either write it on paper, scan it, and email me\footnotemark[1], or for bonus points send me correct \LaTeX\, that I can just copy paste in, or for super bonus points, fork me on github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II}}\footnotemark[4] and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don't be a dick, and please be a massive dick so I can ban you.
+Of course, if you know what the error is and how to fix it, then feel free to write up an alternative solution of your own, or even an entire solution to a problem that I haven't yet attempted. I'll be happy to include it and give you credit for writing it. Either write it on paper, scan it, and email me\footnotemark[1], or for bonus points send me correct \LaTeX, that I can just copy paste in, or for super bonus points, fork me on github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II}}\footnotemark[4] and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don't be a dick, and please be a massive dick so I can ban you.
 
-This document does have a habit of just stating answers without much explanation. For my contributions, I'm effectively just typing up the solutions that I have written on paper (because \LaTeX sucks), which were written whilst the exam paper was in front of me. As such a lot of this won't make any sense at all if you don't have the relevant exam paper in front of you. Also, the links won't work in the dropbox version. Sorry about that. If you're REALLY desperate to have clickable links, just download it. 
+This document does have a habit of just stating answers without much explanation. For my contributions, I'm effectively just typing up the solutions that I have written on paper (because \LaTeX sucks), which were written whilst the exam paper was in front of me. As such a lot of this won't make any sense at all if you don't have the relevant exam paper in front of you. Also, the links won't work in the dropbox version. Sorry about that. If you're REALLY desperate to have clickable links, just download it. I've also spotted a minor issue with = signs on the lab machines in the Merchant Venturers' Building where pdfs just don't display properly. If $=$ and $\neq$ look like the same symbol to you, you're probably also going to have these issues, which can be fixed by just downloading it. Seems to be something specific to Chrome running on certain UNIX systems, so I'm not going to go mad trying to fix it for everyone.
 
 Right, now that that's all out of the way, let's do some maths.
 
