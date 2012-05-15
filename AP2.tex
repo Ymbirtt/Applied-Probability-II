@@ -160,8 +160,8 @@ $G_X(s) = \sum\limits_{x \in \mathcal{X}}\pr(X=i)s^i$, so, $G_X(0) = \pr(X=0)$.
 We also have that $G_j(G_1(s)) = G_1(G_j(s))$.
 \begin{align*}
 e &= \lim_{j\rightarrow\infty}G_j(0)\\
-&= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0))\mbox{\;\; by continuity of G}\\
-&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\\
+&= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0))\\
+&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity of G}\\
 &= G_1(e)
 \end{align*}
 So $e = G_1(e)$.
