@@ -57,7 +57,8 @@ Last update was on \today \, at \currenttime-ish
 
 Like, seriously, loads of them. No I do not know where they are. These attempts
 at solutions are in no way guaranteed to be accurate. Please do not read this
-and assume that you're totally correct/incorrect just because you agree/disagreewith the stuff that's written in the big shiny \LaTeX \,document. Rather, think
+and assume that you're totally correct/incorrect just because you agree/disagree
+with the stuff that's written in the big shiny \LaTeX \,document. Rather, think
 as you read through it. Follow my logic, and if it doesn't make sense to you
 then ask me. Email me\footnotetext[1]{\url{ymbirtt@gmail.com}}\footnotemark[1],
 grab me on Steam, Skype, League of Legends\footnotetext[2]{Ymbirtt on
@@ -73,18 +74,21 @@ credit for writing it. Either write it on paper, scan it, and email
 me\footnotemark[1], or for bonus points send me correct \LaTeX, that I can just
 copy paste in, or for super bonus points, fork me on
 github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II/blob/master/AP2.tex}}\footnotemark[4]
-and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don'tbe a dick, and please be a massive dick so I can ban you.
+and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don't
+be a dick, and please be a massive dick so I can ban you.
 
 This document does have a habit of just stating answers without much
 explanation. For my contributions, I'm effectively just typing up the solutions
 that I have written on paper (because \LaTeX sucks), which were written whilst
-the exam paper was in front of me. As such a lot of this won't make any sense atall if you don't have the relevant exam paper in front of you. Also, the links
+the exam paper was in front of me. As such a lot of this won't make any sense at
+all if you don't have the relevant exam paper in front of you. Also, the links
 won't work in the dropbox version. Sorry about that. If you're REALLY desperate
 to have clickable links, just download it. I've also spotted a minor issue with
 = signs on the lab machines in the Merchant Venturers' Building where pdfs just
 don't display properly. If $=$ and $\neq$ look like the same symbol to you,
 you're probably also going to have these issues, which can be fixed by just
-downloading it. Seems to be something specific to Chrome running on certain UNIXsystems, so I'm not going to go mad trying to fix it for everyone.
+downloading it. Seems to be something specific to Chrome running on certain UNIX
+systems, so I'm not going to go mad trying to fix it for everyone.
 
 If you want to make my life phenominally easy, then please use Github for any
 changes you want to make. The code file\footnotemark[4] can be edited in your
@@ -242,7 +246,8 @@ detected})\pr(N(t)=n)
 h+o(h))(p)p_{n-1}(t)\\
 &= p_n(t)-\mu h p p_n(t) + \mu h p p_{n-1}(t) +o(h)
 \end{align*}
-If we let $\lambda = \mu p$, exactly the same argument as before holds, so $N(t)\sim Po(\mu p t)$, and $\mathbb{E}(N(t)) = \mu p t$ by properties of the
+If we let $\lambda = \mu p$, exactly the same argument as before holds, so 
+$N(t)\sim Po(\mu p t)$, and $\mathbb{E}(N(t)) = \mu p t$ by properties of the
 poisson.
 \item
 I'm really not sure on this answer. Correct it if you find anything wrong.
@@ -288,7 +293,8 @@ recurrence relation for $r_i$, so assume $r_i = \theta^i$, so
 solution}\\
 &\implies \theta = 1 \mbox { twice}
 \end{align*}
-This gives us that $r_i = A\theta^i +Bi\theta^i = A+Bi$. Our values for $r_{-a}$and $r_b$ give us that
+This gives us that $r_i = A\theta^i +Bi\theta^i = A+Bi$. Our values for $r_{-a}$
+and $r_b$ give us that
 \begin{align*}
 A-aB &= 1\\
 A+bB &= 0\\
@@ -301,9 +307,11 @@ Substituting in $i=0$ gives the desired result.
 \item
 Let $s_k = \pr (X_n = 0 \wedge \forall k<n X_k \neq 0 \wedge \forall 1<l<n X_l
 \neq K, -K | X_0 = k)$. $s_k$ is the probability that we return to 0 before
-hitting either $K$ or $-K$. We want to find $s_0$. From similar logic to before,we have that $s_0 = \frac{s_{-1}+s_1}{2}$.
+hitting either $K$ or $-K$. We want to find $s_0$. From similar logic to before,
+we have that $s_0 = \frac{s_{-1}+s_1}{2}$.
 
-If the process starts by moving upwards, so $Y_0 = 1$, we have a process similarto before, with $a=0,b=K, X_0 =1$, so
+If the process starts by moving upwards, so $Y_0 = 1$, we have a process similar
+to before, with $a=0,b=K, X_0 =1$, so
 \begin{align*}
 s_1 = r_1 &= \frac{b-1}{a+b}\\
 &= \frac{K-1}{K}
@@ -392,7 +400,8 @@ of 2, but beyond that I don't know how to approach it. Contribute! Be bold!
 \begin{enumerate}
 \item
 \begin{enumerate}
-\item A state, $j$, is recurrent if the probability of travelling from state $j$to $j$ in some length of time is $1$. $j$ is positive recurrent if $\mu_{jj}$,
+\item A state, $j$, is recurrent if the probability of travelling from state $j$
+to $j$ in some length of time is $1$. $j$ is positive recurrent if $\mu_{jj}$,
 the expected time between returns, is finite.
 
 \item A stationary distribution is a vector, $\underline{\pi}$, satisfying:
@@ -434,7 +443,8 @@ single closed communicating class.
 The chain consists of a single, irreducible, finite closed communicating class,
 so all states must be positive recurrent.
 \item
-We can see that there are exactly two cycles for state 1, namely $(1,2,4,1)$ and$(1,3,5,1)$. Both of these cycles are of order 3, so
+We can see that there are exactly two cycles for state 1, namely $(1,2,4,1)$ and
+$(1,3,5,1)$. Both of these cycles are of order 3, so
 \begin{align*}
 d_1 &= hcf\{3,6,9,12,\dots\}\\
 &= 3
@@ -485,7 +495,8 @@ $p_{ii}=0$}\\
 \end{align*}
 So $\underline{\mu}$ satisfies $\underline{\mu}P = \underline{\mu} \wedge
 ||\underline{\mu}||_1 = 1$, and is therefore a stationary distribution for $P$.
-All of these steps will also work backwards, so stationary distributions for $P$are also stationary distributions for $Q$.
+All of these steps will also work backwards, so stationary distributions for $P$
+are also stationary distributions for $Q$.
 \begin{enumerate}
 \item
 As before, each state intercommunicates, but now state 1 has cycle $(1,1)$ of
@@ -493,7 +504,8 @@ order 1, so $d_1|1$ and $d_1 | 3$, hence $d_1 =1$, since 1 and 3 are coprime.
 Similar logic to before will give us that $\forall i \in S, d_i = 1$, so the
 chane is aperiodic.
 \item
-Since the chain is aperiodic, a limiting distribution exists and is equal to thestationary distribution, namely:
+Since the chain is aperiodic, a limiting distribution exists and is equal to the
+stationary distribution, namely:
 $$
 \underline{\pi} =
 \left(\frac{1}{3},\frac{\alpha}{3},\frac{1-\alpha}{3},\frac{\alpha}{3},\frac{1-\alpha}{3}\right)
