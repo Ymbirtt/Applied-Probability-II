@@ -232,12 +232,13 @@ And, where $n=0$, $p_{-1}(t) = 0$, so
 $$
 p_0'(t) = -\lambda p_0(t)
 $$
+\item
 \begin{enumerate}
 \item
 Let $p_n(t) = \pr(N(t) = n)$, as per usual.
 \begin{align*}
-p_n(t+h) &= \pr(N(t+h) = n | N(t) = n)\pr(N(t)=n) +
-\pr(N(t+h)=n|N(t)=n-1)\pr(N(t)=n-1)+o(h)\\
+p_n(t+h) &= \pr(N(t+h) = n | N(t) = n)\pr(N(t)=n) + \\
+&\quad \quad \quad \pr(N(t+h)=n|N(t)=n-1)\pr(N(t)=n-1)+o(h)\\
 &=\pr(\mbox{no decay})\pr(N(t)=n) + \pr(\mbox{decay})\pr(\mbox{not
 detected})\pr(N(t)=n)
 \\ & \quad \quad \quad +
