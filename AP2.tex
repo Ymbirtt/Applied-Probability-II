@@ -102,6 +102,287 @@ change this next sentence. I like bacon.
 Right, now that that's all out of the way, let's do some maths.
 
 \clearpage
+\section*{2010 paper, \url{http://bit.ly/M5nKeg}}
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item
+Let $X_k$ denote the number of descendents of individual $k$ of generation $i$ which survive to generateion $j$. This gives us that
+$$
+N_j = \sum^{N_i}_{k=1}X_k
+$$
+As required.
+
+Where $K$ is a non-negative integer valued random variable, $\{Y_i\}$ is a
+sequence of independent identically distributed random variables,
+$Z=Y_1+\dots+Y_K$ is their sum, and $G_Z(s)$ is the probability generating
+function for $Z$, similarly for $K$ and $Y$, we have that
+$$
+G_Z(s) = G_K(G_Y(s))
+$$
+In this model, $Z$ corresponds to $N_j$, $K$ corresponds to $N_i$, and the $Y_i$ correspond to the $X_k$, so
+$$
+G_j(s) = G_i(G_X(s))
+$$
+Each $X_k$ can be considered to be the population of a single branching process after it has been running for the number of generations between generations $i$ and $j$, ie a branching process after running for $j-i$ generations, so
+$$
+G_j(s) = G_i(G_{j-i}(s))
+$$
+\item 
+\begin{enumerate}
+\item
+If a generation has no children, then the next generation will also be
+childless, so,
+$$
+N_j=0 \implies N_{j+1}=0
+$$
+Eventual extinction corresponds to 
+$$
+\{\exists n \in \mathbb{N} \;\, st \;\, N_j=0\} = \bigcup^\infty_{j=1}\{N_j=0\}
+$$
+By continuity of probability, for any increasing sequence of events such that
+$A_j \subseteq A_{j+1}$, we have that
+$$
+\pr\left(\bigcup^\infty_{j=1}A_j\right) = \lim_{j\rightarrow\infty} \pr(A_j)
+$$
+So, finally,
+$$
+e=\pr\left(\bigcup^\infty_{j=1}\{N_j=0\}\right) = \lim_{j\rightarrow\infty}
+\pr(N_j=0) = \lim_{j\rightarrow\infty}e_j
+$$
+$$
+e=\lim_{j\rightarrow\infty}e_j
+$$
+\item
+$G_X(s) = \sum\limits_{x \in \mathcal{X}}\pr(X=i)s^i$, so, $G_X(0) = \pr(X=0)$, so
+\begin{align*}
+e &= \lim_{j\rightarrow\infty}G_j(0)\\
+&= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0)) \mbox{\;\; by choosing $i=1$}\\
+&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity of G}\\
+&= G_1(e)
+\end{align*}
+So $e = G_1(e)$.
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+$$
+G(s) = \frac{1}{17}(3+9s^2+5s^3)
+$$
+Let $e=G(e)$
+\begin{align*}
+\implies e &= \frac{1}{17}(3+9e^2+5e^3)\\
+\implies 0 &= \frac{1}{17}(5e^3+9e^2-14)\\
+&= (e-1)(5e^2+14e-14)\\
+\end{align*}
+So $e=1$ is one solution, and the other two solutions can be found through the quadratic formula, giving:
+$$
+e=\frac{-14\pm\sqrt{476}}{10},\quad e=1
+$$
+$21^2=441$ and $22^2=484$, so $\sqrt{476} \in (21,22)$. The probability of eventual extinction is the smallest solution to $e=G(e)$, namely
+$$
+\frac{-14+\sqrt{476}}{10} \in \left(\frac{7}{10},\frac{8}{10}\right)
+$$
+This looks like an oddly messy solution, so I may have done something terminally stupid here. Alternative suggestions welcome.
+\item
+I had a crack at this, and then immediately stopped when the slightly hideous generating function for $G_0(s)$ appeared. This is probably doable by modelling this new process as a series of 10 independent processes, conditioning on the value of $N_0$, then summing up, but I've not yet had the time to make another attempt. Contribute and be awesome etc.
+\end{enumerate}
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+
+A continuous time counting process with stationary, independent increments,
+where the number of increments in time $t$ follows a $Po(\lambda t)$
+distribution.
+\item
+\begin{align*}
+p_n(t+h) &= \pr(N(t+n)=n | N(t) = n-1)\pr(N(t)=n-1) + \pr(N(t+n)=n | N(t) =
+n)\pr(N(t)=n) + o(h) \\
+&= (1-\lambda h +o(h))p_n(t) + (\lambda h + o(h))p_{n-1}(t) + o(h)\\
+&= p_n(t) -\lambda h p_n(t) + \lambda h p_{n-1}(t) + o(h)\\
+&\implies \frac{p_n(t+h)-p_n(t)}{h} = -\lambda(p_n(t)-p_{n-1}(t))\\
+&\implies p_n'(t) = -\lambda(p_n(t)-p_{n-1}(t))
+\end{align*}
+Where $N(t) \sim Po(\lambda t)$, $\pr(N(t)=n) = \frac{e^{-\lambda t}(\lambda 
+t)^n}{n!}$, so
+\begin{align*}
+p_n'(t) &= \frac{d}{dt} \frac{e^{-\lambda t}(\lambda t)^n}{n!}\\
+&= \frac{-\lambda e^{-\lambda t}(\lambda t)^n + n \lambda e^{-\lambda t}(\lambda t)^{n-1}}{n!}\\
+&= -\lambda \left( \frac{e^{-\lambda t}(\lambda t)^n}{n!} - \frac{e^{-\lambda 
+t}(\lambda t)^{n-1}}{(n-1)!}\right)\\
+&= -\lambda(p_n(t) - p_{n-1}(t))
+\end{align*}
+And, where $n=0$, $p_{-1}(t) = 0$, so 
+$$
+p_0'(t) = -\lambda p_0(t)
+$$
+\item Again, this one is more than slightly shakey, and I can't be certain that my initial reasoning is correct.  I get a vaguely sane looking recurrence relation after the first stage, I couldn't take it any further. Here's what I have so far:
+\begin{align*}
+q_m(t+h) &= \pr(M(t+h) = m | M(t) = m)\pr(M(t)=m)\\
+&\quad\quad\quad + \pr(M(t+h)=m|M(t) = m+1) \pr(M(t) = m+1)\\
+&\quad\quad\quad + \pr(M(t+h)=m|M(t) = m-1) \pr(M(t) = m-1) +o(h)\\
+&= q_{m}(t)[(1-\mu h + o(h))(1-\lambda h +o(h)) + (\mu\lambda h^2 +o(h))]\\
+&\quad\quad\quad + q_{m+1}(t)(\mu h + o(h)) + q_{m-1}(t)(\lambda h + o(h))\\
+\implies q_m'(t)& = \lambda q_{m-1}(t) - (\lambda + \mu) q_m(t) + \mu q_{m+1}(t)
+\end{align*}
+And that's about all I got. If we send $t$ off to infinity, we get a nice homogeneous equation to solve which should come out nice and quadratic and solvable, but making it look like the template we've been given is somewhat harder, making me suspect that this isn't quite right. One thing I haven't tried yet is just putting the tempate in and trying to brute force some constants out of it. Getting 2 variables from 1 equation sounds Fun, but maybe something nice happens if you try it.
+\end{enumerate}
+\item The solutions I've got on paper for this are no good. I'll re-do them tomorrow
+
+\item OK, SRWs and Martingales, back into nice territory...
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item A state, $j$, is transient $\iff$ $f_{jj}$, the probability of ever returning to $j$ having left it, is not equal to $1$
+\item A state, $j$, is recurrent if it is not transient, ie $f_{jj}=1$.
+
+If $\sum\limits^\infty_{n=0}p_{jj}(n) < \infty$, then $j$ is transient, otherwise it is recurrent.
+
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+$$
+p_{00}(n) = \pr (X_n = 0 | X_0 = 0)
+$$
+$p_{00}(n) = 0$ for $n$ odd, since we need exactly as many upward steps as downward steps to go from $0$ to $0$. We then have that $p_{00}(2n)$ is the probability of taking exactly $n$ upward steps and $n$ downward steps, in any order. This can be modelled by the probability that a $Bin(2n,p)$ distributed rv has exactly $n$ successes, which give us that
+$$
+p_{00}(2n) = {2n \choose n} p^nq^n
+$$
+Now consider $\sum\limits^\infty_{n=0}{2n\choose n} p^nq^n$.
+\begin{align*}
+&= \sum^\infty_{n=0}{-\frac{1}{2}\choose n}(-1)^n 2^{2n} p^n q^n\\
+&= \sum^\infty_{n=0}{-\frac{1}{2}\choose n}(-4pq)^n\\
+\end{align*}
+Binomial theorem gives us that
+$$
+\frac{1}{\sqrt{1-x}} = \sum^\infty_{n=0}{-\frac{1}{2}\choose n}(-x)^n 
+$$
+for $|x|<1$, and for $|x|\geqslant 1$, the sum does not converge. Setting $x=4pq$, we get that $|x\!\,|\,=1$ for $p=q=\frac{1}{2}$, and for $p \neq q$, $x<1$, so the sum does converge.
+
+So for $p=q=\frac{1}{2}$, state 0 is transient, otherwise it is recurrent.
+\end{enumerate}
+\item
+$Y_n$ depends entirely on the current value of a process that is itself Markovian, so $\{Y_n\}$ is itself Markovian. Let $P$ denote $\{Y_n\}$'s stationary transition matrix.
+\begin{align*}
+p_{i\,i+1} &= \pr (Y_n = i+1 | Y_n = i)\\
+&= \pr(Y_n = i+1 | Y_n = i \wedge X_n = i) \pr (X_n = i | Y_n = i)\\
+&\quad\quad\quad + \pr(Y_n = i+1 | Y_n = i \wedge X_n = -i) \pr (X_n = -i | Y_n = i)\\
+&= \pr(Y_n = i+1 | X_n = i) \pr (X_n = i | Y_n = i)\\
+&\quad\quad\quad + \pr(Y_n = i+1 | X_n = -i) \pr (X_n = -i | Y_n = i)\mbox{\quad since $X_n = \pm i \implies Y_n = i$}\\
+&= \pr (\mbox{upward step})\frac{p^i}{p^i+q^i} + \pr (\mbox{downward step}) \frac{q^i}{p^i+q^i} \mbox{ for $i>0$}\\
+&= \frac{p^{i+1}+q^{i+1}}{p^i+q^i}
+\end{align*}
+By similar logic, we find that
+\begin{align*}
+p_{i\,i+1} &= \pr(\mbox{downward step})\pr(X_n = i | Y_n = i) + \pr (\mbox{upward step})\pr(X_i = -i | Y_i = i)\\
+&= \frac{qp^{i}+pq^{i}}{p^i+q^i}
+\end{align*}
+Also note that for $i=0$, $p_01=1$, since starting in state 0 will either take us to $-1$ or $1$ in $X$, which will always take us to $1$ in $Y$. The stationary transition probabilities are, therefore,
+$$
+p_{ij} = \left\{
+\begin{matrix}
+1 & \quad & i=0\wedge j=1\\
+\frac{p^{i+1}+q^{i+1}}{p^i+q^i} & \quad & j=i+1 \wedge i>0\\
+\frac{qp^{i}+pq^{i}}{p^i+q^i} & \quad & j=i-1 \wedge i>0\\
+0 & \quad & \mbox{otherwise}
+\end{matrix}
+\right\}
+$$
+
+By noting that $Y_n = 0 \iff X_n = 0$, we can see that 0 is a recurrent state in $Y_n \iff$ it is recurrent in $X_n$. Hence 0 is a recurrent state in $Y_n$ for $p=q$, and is transient for $p\neq q$.
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+$\{X_n\}$ is a martingale wrt $\{Y_n\} \iff$
+\begin{align*}
+&\mathbb{E}(|X_n|) < \infty\\
+\wedge &\mathbb{E}(X_n{+1} - X_n | \underline{Y} = \underline{y}) = 0
+\end{align*}
+Where $\underline{Y} = (Y_0,\dots,Y_n)$, $\underline{y} = (y_0,\dots,y_n)$.
+
+$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time $n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time wrt $\{X_n\}$ such that
+\begin{align*}
+&\exists c \in \mathbb{R} \st \pr(T<c) = 1\\
+\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c \,\,\forall n \leqslant T]\\
+\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st \mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
+\end{align*}
+Then $ \mathbb{E}(X_T) = \mathbb{E}(X_0)$
+
+\item
+\begin{enumerate}
+\item
+\begin{align*}
+\mathbb{E}(X_{n+1} - X_n | \underline{Y} = \underline{y}) 
+&= \mathbb{E}\left(\sum^{n+1}_{i=0}Y_i - \sum^n_{i=0}Y_i | \underline{Y} = \underline{y}\right)\\
+&= \mathbb{E}\left( Y_{n+1} + \sum^n_{i=0}y_i - y_i\right)\\
+&= \mathbb{E}(Y_{n+1})\\
+&= \mathbb{E}(Y_1)\\
+&= \frac{1}{2} - \frac{1}{2} = 0
+\end{align*}
+Also, $\forall n \in \mathbb{N}, X_n \in [-a,b]$, so $\mathbb{E}(|X_n|) \leqslant a+b<\infty$, so $X_n$ is a martingale wrt $Y_n$
+\item
+Let $r_i = \pr(\exists n \in \mathbb{N} \st X_n = -a \wedge \forall k<n X_k \neq b | X_0 = i)$, so $r_i$ is the probability of hitting $-a$ before $b$ given $X_0 = i$.
+\begin{align*}
+\pr(\mbox{absorbed at $-a$}|X_0=i) &= 
+\pr(\mbox{absorbed at $-a$}|X_0=i \wedge X_1 = i+1)\pr(X_1=i+1 | X_0 = i) \\
+&\quad\quad\quad+ \pr(\mbox{absorbed at $-a$}|X_0=i \wedge X_1 = i-1)\pr(X_1=i-1 | X_0 = i)\\
+&= r_{i+1}\pr(X_1=i+1 | X_0 = i)+r_{i-1}\pr(X_1=i-1 | X_0 = i)\\
+\implies r_i &= \frac{r_{i+1}+r_{i-1}}{2}
+\end{align*}
+This holds for $-a < i < b$. We have that $r_{-a} =1$ and $r_b = 0$, since the probability of being absorbed at $-a$ given we start at $-a$ is 1, and similar reasoning gives the opposite result for $b$.
+\begin{align*}
+r_i &= \frac{r_{i+1}+r_{i-1}}{2}\\
+r_{-a} &= 1\\
+r_b &= 0
+\end{align*}
+Suppose $r_i= \theta^i$
+\begin{align*}
+\implies \theta^i &= \frac{1}{2}(\theta^{i+1}-\theta^{i-1}\\
+\implies \theta^2 -2\theta +1 = 0\\
+\implies \theta &= 1 \mbox{ twice}\\
+\implies r_i &= A\theta^i +iB\theta^i\\
+&= A+iB
+\end{align*}
+Solving this with the base cases $r_{-a}=1$ and $r_{b}=0$ yields
+$$
+r_i = \frac{b-i}{a+b}
+$$
+The probability of reaching $-a$ before $b$ given $X_0 = 0$ is
+$$
+r_0 = \frac{b-0}{a+b} = \frac{b}{a+b}
+$$
+\end{enumerate}
+\item
+This process is markovian, since the distribution of the propotion of reds in the deck after drawing depends only on the proportion before drawing.
+$$
+\mathbb{E}(X_{n+1} - X_n | \underline{X} = \underline{x})
+$$
+Suppose $x_n = \frac{R_n}{M-n}$, where $R_n$ is the number of red cards in the deck at time $n$, so $\mathbb{E}(X_{n+1} - X_n | \underline{X} = \underline{x}) = \mathbb{E}(X_{n+1} - \frac{R_n}{M-n}| X_n = \frac{R_n}{M-n})$.
+$$
+\mathbb{E}(X_{n+1} | X_n = \frac{R_n}{M-n}) = \frac{R_n-1}{M-n-1}\pr\left(X_{n+1} = \frac{R_n-1}{M-n-1}\right) + \frac{R_n}{M-n-1} \pr \left( X_{n+1} = \frac{R_n}{M-n-1}\right)
+$$
+$X_{n+1} = \frac{R_n-1}{M-n-1}$ corresponds to turning over a red card which, given $X_n = \frac{R_n}{M-n}$, has probability $\frac{R_n}{M-n}$.
+
+$X_{n+1} = \frac{R_n}{M-n-1}$ corresponds to turning over a black card which, given $X_n = \frac{R_n}{M-n}$, has probability $\frac{M-n-R_n}{M-n}$, so
+\begin{align*}
+\mathbb{E}(X_{n+1}) &= \frac{R_n-1}{M-n-1}\frac{R_n}{M-n} + \frac{R_n}{M-n-1} \frac{M-n-R_n}{M-n}\\
+&= \frac{R_n^2 - R_n + MR_n - nR_n - R_n^2}{(M-n)(M-n-1)}\\
+&= \frac{R_n(M-n-1)}{(M-n)(M-n-1)}\\
+&= \frac{R_n}{M-n}
+\end{align*}
+So, finally
+\begin{align*}
+\mathbb{E}(X_{n+1}-X_n | \underline{X} = \underline{x}) &= \mathbb{E}\left(X_n+1|X_n = \frac{R_n}{M-n}\right) - \frac{R_n}{M-n}\\
+&= \frac{R_n}{M-n} - \frac{R_n}{M-n}\\
+&= 0
+\end{align*}
+The above calculation also gave us that, if $X_n$ is finite, $X_{n+1}$ is also finite, and we also know that $X_0$ is finite, so induction gives us that $X_n$ is finite for all $n$, so $\{X_n\}$ is finite with respect to itself.
+\end{enumerate}
+\end{enumerate}
+\clearpage
 \section*{2011 paper, \url{http://bit.ly/KChGKp}}
 \begin{enumerate}
 \item
