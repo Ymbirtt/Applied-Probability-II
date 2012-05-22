@@ -27,8 +27,6 @@
 \newcommand{\alty}{\\[0.1cm]&\:|\:&} % bnf alternative on new line
 \newcommand{\minus}{\mbox{-}} % minus sign
 \newcommand{\term}[1]{\,\mbox{\tt #1}\,} % bnf terminal
-\newcommand{\str}{\stackrel{.}{\rightsquigarrow}} % one-step structural semantics
-\newcommand{\sts}{\stackrel{_{*}}{\rightsquigarrow}} % multi-step structural semantics
 \newcommand{\nat}{\rightsquigarrow} % natural semantics
 \newcommand{\axm}[4]{\item[{\sc #1 :
 }]\begin{tabular}{cc}#2\\\hline#3\\\end{tabular}\quad#4}
@@ -57,13 +55,13 @@ Last update was on \today \, at \currenttime-ish
 
 Like, seriously, loads of them. No I do not know where they are. These attempts
 at solutions are in no way guaranteed to be accurate. Please do not read this
-and assume that you're totally correct/incorrect just because you agree/disagree
-with the stuff that's written in the big shiny \LaTeX \,document. Rather, think
-as you read through it. Follow my logic, and if it doesn't make sense to you
-then ask me. Email me\footnotetext[1]{\url{ymbirtt@gmail.com}}\footnotemark[1],
-grab me on Steam, Skype, League of Legends\footnotetext[2]{Ymbirtt on
-all}\footnotemark[2], facebook, bang on my front door
-repeatedly\footnotetext[3]{Bring enough cake for me and my
+and assume that you're totally correct/incorrect just because you
+agree/disagreewith the stuff that's written in the big shiny \LaTeX \,document.
+Rather, think as you read through it. Follow my logic, and if it doesn't make
+ sense to you then ask me. Email me\footnotetext[1]
+{\url{ymbirtt@gmail.com}}\footnotemark[1], grab me on Steam, Skype, League of
+ Legends\footnotetext[2]{Ymbirtt on all}\footnotemark[2], facebook, bang on my
+ front door repeatedly\footnotetext[3]{Bring enough cake for me and my
 flatmates}\footnotemark[3], just ask if something doesn't make sense, because I
 can and do make errors.
 
@@ -74,21 +72,18 @@ credit for writing it. Either write it on paper, scan it, and email
 me\footnotemark[1], or for bonus points send me correct \LaTeX, that I can just
 copy paste in, or for super bonus points, fork me on
 github\footnotetext[4]{\url{https://github.com/Ymbirtt/Applied-Probability-II/blob/master/AP2.tex}}\footnotemark[4]
-and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don't
-be a dick, and please be a massive dick so I can ban you.
+and push a revision at me. Basic rules of Wikipedia apply, namely be bold, don'tbe a dick, and please be a massive dick so I can ban you.
 
 This document does have a habit of just stating answers without much
 explanation. For my contributions, I'm effectively just typing up the solutions
 that I have written on paper (because \LaTeX sucks), which were written whilst
-the exam paper was in front of me. As such a lot of this won't make any sense at
-all if you don't have the relevant exam paper in front of you. Also, the links
+the exam paper was in front of me. As such a lot of this won't make any sense atall if you don't have the relevant exam paper in front of you. Also, the links
 won't work in the dropbox version. Sorry about that. If you're REALLY desperate
 to have clickable links, just download it. I've also spotted a minor issue with
 = signs on the lab machines in the Merchant Venturers' Building where pdfs just
 don't display properly. If $=$ and $\neq$ look like the same symbol to you,
 you're probably also going to have these issues, which can be fixed by just
-downloading it. Seems to be something specific to Chrome running on certain UNIX
-systems, so I'm not going to go mad trying to fix it for everyone.
+downloading it. Seems to be something specific to Chrome running on certain UNIXsystems, so I'm not going to go mad trying to fix it for everyone.
 
 If you want to make my life phenominally easy, then please use Github for any
 changes you want to make. The code file\footnotemark[4] can be edited in your
@@ -107,7 +102,8 @@ Right, now that that's all out of the way, let's do some maths.
 \item
 \begin{enumerate}
 \item
-Let $X_k$ denote the number of descendents of individual $k$ of generation $i$ which survive to generateion $j$. This gives us that
+Let $X_k$ denote the number of descendents of individual $k$ of generation $i$
+which survive to generateion $j$. This gives us that
 $$
 N_j = \sum^{N_i}_{k=1}X_k
 $$
@@ -120,11 +116,14 @@ function for $Z$, similarly for $K$ and $Y$, we have that
 $$
 G_Z(s) = G_K(G_Y(s))
 $$
-In this model, $Z$ corresponds to $N_j$, $K$ corresponds to $N_i$, and the $Y_i$ correspond to the $X_k$, so
+In this model, $Z$ corresponds to $N_j$, $K$ corresponds to $N_i$, and the $Y_i$
+correspond to the $X_k$, so
 $$
 G_j(s) = G_i(G_X(s))
 $$
-Each $X_k$ can be considered to be the population of a single branching process after it has been running for the number of generations between generations $i$ and $j$, ie a branching process after running for $j-i$ generations, so
+Each $X_k$ can be considered to be the population of a single branching process
+after it has been running for the number of generations between generations $i$
+and $j$, ie a branching process after running for $j-i$ generations, so
 $$
 G_j(s) = G_i(G_{j-i}(s))
 $$
@@ -154,11 +153,13 @@ $$
 e=\lim_{j\rightarrow\infty}e_j
 $$
 \item
-$G_X(s) = \sum\limits_{x \in \mathcal{X}}\pr(X=i)s^i$, so, $G_X(0) = \pr(X=0)$, so
+$G_X(s) = \sum\limits_{x \in \mathcal{X}}\pr(X=i)s^i$, so, $G_X(0) = \pr(X=0)$,
+so
 \begin{align*}
 e &= \lim_{j\rightarrow\infty}G_j(0)\\
 &= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0)) \mbox{\;\; by choosing $i=1$}\\
-&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity of G}\\
+&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity
+of G}\\
 &= G_1(e)
 \end{align*}
 So $e = G_1(e)$.
@@ -175,17 +176,24 @@ Let $e=G(e)$
 \implies 0 &= \frac{1}{17}(5e^3+9e^2-14)\\
 &= (e-1)(5e^2+14e-14)\\
 \end{align*}
-So $e=1$ is one solution, and the other two solutions can be found through the quadratic formula, giving:
+So $e=1$ is one solution, and the other two solutions can be found through the
+quadratic formula, giving:
 $$
 e=\frac{-14\pm\sqrt{476}}{10},\quad e=1
 $$
-$21^2=441$ and $22^2=484$, so $\sqrt{476} \in (21,22)$. The probability of eventual extinction is the smallest solution to $e=G(e)$, namely
+$21^2=441$ and $22^2=484$, so $\sqrt{476} \in (21,22)$. The probability of
+eventual extinction is the smallest solution to $e=G(e)$, namely
 $$
 \frac{-14+\sqrt{476}}{10} \in \left(\frac{7}{10},\frac{8}{10}\right)
 $$
-This looks like an oddly messy solution, so I may have done something terminally stupid here. Alternative suggestions welcome.
+This looks like an oddly messy solution, so I may have done something terminally
+stupid here. Alternative suggestions welcome.
 \item
-I had a crack at this, and then immediately stopped when the slightly hideous generating function for $G_0(s)$ appeared. This is probably doable by modelling this new process as a series of 10 independent processes, conditioning on the value of $N_0$, then summing up, but I've not yet had the time to make another attempt. Contribute and be awesome etc.
+I had a crack at this, and then immediately stopped when the slightly hideous
+generating function for $G_0(s)$ appeared. This is probably doable by modelling
+this new process as a series of 10 independent processes, conditioning on the
+value of $N_0$, then summing up, but I've not yet had the time to make another
+attempt. Contribute and be awesome etc.
 \end{enumerate}
 \end{enumerate}
 \item
@@ -208,7 +216,8 @@ Where $N(t) \sim Po(\lambda t)$, $\pr(N(t)=n) = \frac{e^{-\lambda t}(\lambda
 t)^n}{n!}$, so
 \begin{align*}
 p_n'(t) &= \frac{d}{dt} \frac{e^{-\lambda t}(\lambda t)^n}{n!}\\
-&= \frac{-\lambda e^{-\lambda t}(\lambda t)^n + n \lambda e^{-\lambda t}(\lambda t)^{n-1}}{n!}\\
+&= \frac{-\lambda e^{-\lambda t}(\lambda t)^n + n \lambda e^{-\lambda t}(\lambda
+t)^{n-1}}{n!}\\
 &= -\lambda \left( \frac{e^{-\lambda t}(\lambda t)^n}{n!} - \frac{e^{-\lambda 
 t}(\lambda t)^{n-1}}{(n-1)!}\right)\\
 &= -\lambda(p_n(t) - p_{n-1}(t))
@@ -217,47 +226,67 @@ And, where $n=0$, $p_{-1}(t) = 0$, so
 $$
 p_0'(t) = -\lambda p_0(t)
 $$
-\item Again, this one is more than slightly shakey, and I can't be certain that my initial reasoning is correct.  I get a vaguely sane looking recurrence relation after the first stage, I couldn't take it any further. Here's what I have so far:
+\item Again, this one is more than slightly shakey, and I can't be certain that
+my initial reasoning is correct. I get a vaguely sane looking recurrence
+relation after the first stage, I couldn't take it any further. Here's what I
+have so far:
 \begin{align*}
 q_m(t+h) &= \pr(M(t+h) = m | M(t) = m)\pr(M(t)=m)\\
 &\quad\quad\quad + \pr(M(t+h)=m|M(t) = m+1) \pr(M(t) = m+1)\\
 &\quad\quad\quad + \pr(M(t+h)=m|M(t) = m-1) \pr(M(t) = m-1) +o(h)\\
 &= q_{m}(t)[(1-\mu h + o(h))(1-\lambda h +o(h)) + (\mu\lambda h^2 +o(h))]\\
 &\quad\quad\quad + q_{m+1}(t)(\mu h + o(h)) + q_{m-1}(t)(\lambda h + o(h))\\
-\implies q_m'(t)& = \lambda q_{m-1}(t) - (\lambda + \mu) q_m(t) + \mu q_{m+1}(t)
-\end{align*}
-And that's about all I got. If we send $t$ off to infinity, we get a nice homogeneous equation to solve which should come out nice and quadratic and solvable, but making it look like the template we've been given is somewhat harder, making me suspect that this isn't quite right. One thing I haven't tried yet is just putting the tempate in and trying to brute force some constants out of it. Getting 2 variables from 1 equation sounds Fun, but maybe something nice happens if you try it.
+\implies q_m'(t)& = \lambda q_{m-1}(t) - (\lambda + \mu) q_m(t) + \mu q_{m+1}(t)\end{align*}
+And that's about all I got. If we send $t$ off to infinity, we get a nice
+homogeneous equation to solve which should come out nice and quadratic and
+solvable, but making it look like the template we've been given is somewhat
+harder, making me suspect that this isn't quite right. One thing I haven't tried
+yet is just putting the tempate in and trying to brute force some constants out
+of it. Getting 2 variables from 1 equation sounds Fun, but maybe something nice
+happens if you try it.
 \end{enumerate}
 \item 
 \begin{enumerate}
 \item
 \begin{enumerate}
 \item
-A recurrent state, $j$, is a state where $f_{jj}$, the probability of ever returning to $j$ having left it, is 1.
+A recurrent state, $j$, is a state where $f_{jj}$, the probability of ever
+returning to $j$ having left it, is 1.
 
-A state is null-recurrent if it is recurrent and $\mu_{jj}$, the expected time between returns, is infinite.
+A state is null-recurrent if it is recurrent and $\mu_{jj}$, the expected time
+between returns, is infinite.
 
 A state is positive recurrent if it is recurrent and $\mu_{jj}$ is finite.
 
 \item
-$\underline{\pi}$ is a stationary distribution $\iff$ $\underline{\pi}$ satisfies
+$\underline{\pi}$ is a stationary distribution $\iff$ $\underline{\pi}$
+satisfies
 \begin{align*}
 &\underline{\pi}P = \underline{\pi}\\
 \wedge &\sum_{j \in S} \pi_j = 1\\
 \wedge & \forall j \in S, \pi_j > 0
 \end{align*}
 \item 
-We have already that $\pr (X_0 = i) = \pi_i$.  We also have that $\pr (X_n = j | X_{n-1} = i) = p_{ij}$, and by taking single elements from the identity $\underline{\pi}P = \underline{\pi}$, we have that $\pi_j = \sum\limits_{i\in S}p_{ij}\pi_i$.
+We have already that $\pr (X_0 = i) = \pi_i$. We also have that $\pr (X_n = j |
+X_{n-1} = i) = p_{ij}$, and by taking single elements from the identity
+$\underline{\pi}P = \underline{\pi}$, we have that $\pi_j = \sum\limits_{i\in
+S}p_{ij}\pi_i$.
 
-Assume $\pr (X_{n} =i) = \pi_i \forall n \in \{1\dots k-1\}$ and consider $\pr(X_k = j)$
+Assume $\pr (X_{n} =i) = \pi_i \forall n \in \{1\dots k-1\}$ and consider
+$\pr(X_k = j)$
 \begin{align*}
 \pr(X_k = j) &= \sum_{i \in S} \pr (X_k = j | X_{k-1} = i) \pr (X_{k-1} = i)\\
 &= \sum_{i \in S} p_{ij} \pi_i \mbox{\quad by assumption}\\
 &= \pi_j
 \end{align*}
-So $\pr(X_0 = j) = \pi_j$ by construction, and $\pr(X_{k-1}=j)=\pi_j \implies \pr (X_k = j) = \pi_j$, so by induction $\forall k \in \mathbb{N}, \pr(X_0 = j) = \pi_j \implies \pr (X_k = j) = \pi_j$, as required.
+So $\pr(X_0 = j) = \pi_j$ by construction, and $\pr(X_{k-1}=j)=\pi_j \implies
+\pr (X_k = j) = \pi_j$, so by induction $\forall k \in \mathbb{N}, \pr(X_0 = j)
+= \pi_j \implies \pr (X_k = j) = \pi_j$, as required.
 \item
-A solution for this (and the rest of these questions) is provided at \url{http://bit.ly/K7Bmqf}, though I don't actually understand it well enough to type up my own version of it. I'll have another read through it later and give my take on it when I can.
+A solution for this (and the rest of these questions) is provided at
+\url{http://bit.ly/K7Bmqf}, though I don't actually understand it well enough to
+type up my own version of it. I'll have another read through it later and give
+my take on it when I can.
 \end{enumerate}
 \item
 \begin{enumerate}
@@ -275,9 +304,11 @@ Also, $\sum\limits_{n=0}^\infty\pi_n = 1$, so
 \implies \pi_0 &= \frac{1}{e-1}\\
 \pi_n &= \frac{1}{(e-1)(n+1)!}
 \end{align*}
-So the chain has a stationary distribution, and is irreducible, so all states are positive recurrent from (iv)
+So the chain has a stationary distribution, and is irreducible, so all states
+are positive recurrent from (iv)
 \item
-The long run proportion of time spent in state $j$ is given by $\pi_j$, and the mean time between returns to state $j$ is given by $\pi_j^{-1}$, so
+The long run proportion of time spent in state $j$ is given by $\pi_j$, and the
+mean time between returns to state $j$ is given by $\pi_j^{-1}$, so
 \begin{align*}
 \pi_0 &= \frac{1}{e-1}\\
 \frac{1}{\pi_0} &= e-1
@@ -289,10 +320,12 @@ The long run proportion of time spent in state $j$ is given by $\pi_j$, and the 
 \begin{enumerate}
 \item
 \begin{enumerate}
-\item A state, $j$, is transient $\iff$ $f_{jj}$, the probability of ever returning to $j$ having left it, is not equal to $1$
+\item A state, $j$, is transient $\iff$ $f_{jj}$, the probability of ever
+returning to $j$ having left it, is not equal to $1$
 \item A state, $j$, is recurrent if it is not transient, ie $f_{jj}=1$.
 
-If $\sum\limits^\infty_{n=0}p_{jj}(n) < \infty$, then $j$ is transient, otherwise it is recurrent.
+If $\sum\limits^\infty_{n=0}p_{jj}(n) < \infty$, then $j$ is transient,
+otherwise it is recurrent.
 
 \end{enumerate}
 \item
@@ -301,7 +334,11 @@ If $\sum\limits^\infty_{n=0}p_{jj}(n) < \infty$, then $j$ is transient, otherwis
 $$
 p_{00}(n) = \pr (X_n = 0 | X_0 = 0)
 $$
-$p_{00}(n) = 0$ for $n$ odd, since we need exactly as many upward steps as downward steps to go from $0$ to $0$. We then have that $p_{00}(2n)$ is the probability of taking exactly $n$ upward steps and $n$ downward steps, in any order. This can be modelled by the probability that a $Bin(2n,p)$ distributed rv has exactly $n$ successes, which give us that
+$p_{00}(n) = 0$ for $n$ odd, since we need exactly as many upward steps as
+downward steps to go from $0$ to $0$. We then have that $p_{00}(2n)$ is the
+probability of taking exactly $n$ upward steps and $n$ downward steps, in any
+order. This can be modelled by the probability that a $Bin(2n,p)$ distributed rv
+has exactly $n$ successes, which give us that
 $$
 p_{00}(2n) = {2n \choose n} p^nq^n
 $$
@@ -314,27 +351,37 @@ Binomial theorem gives us that
 $$
 \frac{1}{\sqrt{1-x}} = \sum^\infty_{n=0}{-\frac{1}{2}\choose n}(-x)^n 
 $$
-for $|x|<1$, and for $|x|\geqslant 1$, the sum does not converge. Setting $x=4pq$, we get that $|x\!\,|\,=1$ for $p=q=\frac{1}{2}$, and for $p \neq q$, $x<1$, so the sum does converge.
+for $|x|<1$, and for $|x|\geqslant 1$, the sum does not converge. Setting
+$x=4pq$, we get that $|x\!\,|\,=1$ for $p=q=\frac{1}{2}$, and for $p \neq q$,
+$x<1$, so the sum does converge.
 
 So for $p=q=\frac{1}{2}$, state 0 is transient, otherwise it is recurrent.
 \end{enumerate}
 \item
-$Y_n$ depends entirely on the current value of a process that is itself Markovian, so $\{Y_n\}$ is itself Markovian. Let $P$ denote $\{Y_n\}$'s stationary transition matrix.
+$Y_n$ depends entirely on the current value of a process that is itself
+Markovian, so $\{Y_n\}$ is itself Markovian. Let $P$ denote $\{Y_n\}$'s
+stationary transition matrix.
 \begin{align*}
 p_{i\,i+1} &= \pr (Y_n = i+1 | Y_n = i)\\
 &= \pr(Y_n = i+1 | Y_n = i \wedge X_n = i) \pr (X_n = i | Y_n = i)\\
-&\quad\quad\quad + \pr(Y_n = i+1 | Y_n = i \wedge X_n = -i) \pr (X_n = -i | Y_n = i)\\
+&\quad\quad\quad + \pr(Y_n = i+1 | Y_n = i \wedge X_n = -i) \pr (X_n = -i | Y_n
+= i)\\
 &= \pr(Y_n = i+1 | X_n = i) \pr (X_n = i | Y_n = i)\\
-&\quad\quad\quad + \pr(Y_n = i+1 | X_n = -i) \pr (X_n = -i | Y_n = i)\mbox{\quad since $X_n = \pm i \implies Y_n = i$}\\
-&= \pr (\mbox{upward step})\frac{p^i}{p^i+q^i} + \pr (\mbox{downward step}) \frac{q^i}{p^i+q^i} \mbox{ for $i>0$}\\
+&\quad\quad\quad + \pr(Y_n = i+1 | X_n = -i) \pr (X_n = -i | Y_n = i)\mbox{\quad
+since $X_n = \pm i \implies Y_n = i$}\\
+&= \pr (\mbox{upward step})\frac{p^i}{p^i+q^i} + \pr (\mbox{downward step})
+\frac{q^i}{p^i+q^i} \mbox{ for $i>0$}\\
 &= \frac{p^{i+1}+q^{i+1}}{p^i+q^i}
 \end{align*}
 By similar logic, we find that
 \begin{align*}
-p_{i\,i+1} &= \pr(\mbox{downward step})\pr(X_n = i | Y_n = i) + \pr (\mbox{upward step})\pr(X_i = -i | Y_i = i)\\
+p_{i\,i+1} &= \pr(\mbox{downward step})\pr(X_n = i | Y_n = i) + \pr
+(\mbox{upward step})\pr(X_i = -i | Y_i = i)\\
 &= \frac{qp^{i}+pq^{i}}{p^i+q^i}
 \end{align*}
-Also note that for $i=0$, $p_01=1$, since starting in state 0 will either take us to $-1$ or $1$ in $X$, which will always take us to $1$ in $Y$. The stationary transition probabilities are, therefore,
+Also note that for $i=0$, $p_01=1$, since starting in state 0 will either take
+us to $-1$ or $1$ in $X$, which will always take us to $1$ in $Y$. The
+stationary transition probabilities are, therefore,
 $$
 p_{ij} = \left\{
 \begin{matrix}
@@ -346,7 +393,9 @@ p_{ij} = \left\{
 \right\}
 $$
 
-By noting that $Y_n = 0 \iff X_n = 0$, we can see that 0 is a recurrent state in $Y_n \iff$ it is recurrent in $X_n$. Hence 0 is a recurrent state in $Y_n$ for $p=q$, and is transient for $p\neq q$.
+By noting that $Y_n = 0 \iff X_n = 0$, we can see that 0 is a recurrent state in
+$Y_n \iff$ it is recurrent in $X_n$. Hence 0 is a recurrent state in $Y_n$ for
+$p=q$, and is transient for $p\neq q$.
 \end{enumerate}
 \item
 \begin{enumerate}
@@ -358,11 +407,16 @@ $\{X_n\}$ is a martingale wrt $\{Y_n\} \iff$
 \end{align*}
 Where $\underline{Y} = (Y_0,\dots,Y_n)$, $\underline{y} = (y_0,\dots,y_n)$.
 
-$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time $n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time wrt $\{X_n\}$ such that
+$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time
+$n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping
+theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time
+wrt $\{X_n\}$ such that
 \begin{align*}
 &\exists c \in \mathbb{R} \st \pr(T<c) = 1\\
-\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c \,\,\forall n \leqslant T]\\
-\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st \mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
+\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c
+\,\,\forall n \leqslant T]\\
+\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st
+\mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
 \end{align*}
 Then $ \mathbb{E}(X_T) = \mathbb{E}(X_0)$
 
@@ -371,23 +425,30 @@ Then $ \mathbb{E}(X_T) = \mathbb{E}(X_0)$
 \item
 \begin{align*}
 \mathbb{E}(X_{n+1} - X_n | \underline{Y} = \underline{y}) 
-&= \mathbb{E}\left(\sum^{n+1}_{i=0}Y_i - \sum^n_{i=0}Y_i | \underline{Y} = \underline{y}\right)\\
+&= \mathbb{E}\left(\sum^{n+1}_{i=0}Y_i - \sum^n_{i=0}Y_i | \underline{Y} =
+\underline{y}\right)\\
 &= \mathbb{E}\left( Y_{n+1} + \sum^n_{i=0}y_i - y_i\right)\\
 &= \mathbb{E}(Y_{n+1})\\
 &= \mathbb{E}(Y_1)\\
 &= \frac{1}{2} - \frac{1}{2} = 0
 \end{align*}
-Also, $\forall n \in \mathbb{N}, X_n \in [-a,b]$, so $\mathbb{E}(|X_n|) \leqslant a+b<\infty$, so $X_n$ is a martingale wrt $Y_n$
+Also, $\forall n \in \mathbb{N}, X_n \in [-a,b]$, so $\mathbb{E}(|X_n|)
+\leqslant a+b<\infty$, so $X_n$ is a martingale wrt $Y_n$
 \item
-Let $r_i = \pr(\exists n \in \mathbb{N} \st X_n = -a \wedge \forall k<n X_k \neq b | X_0 = i)$, so $r_i$ is the probability of hitting $-a$ before $b$ given $X_0 = i$.
+Let $r_i = \pr(\exists n \in \mathbb{N} \st X_n = -a \wedge \forall k<n X_k \neq
+b | X_0 = i)$, so $r_i$ is the probability of hitting $-a$ before $b$ given $X_0
+= i$.
 \begin{align*}
 \pr(\mbox{absorbed at $-a$}|X_0=i) &= 
 \pr(\mbox{absorbed at $-a$}|X_0=i \wedge X_1 = i+1)\pr(X_1=i+1 | X_0 = i) \\
-&\quad\quad\quad+ \pr(\mbox{absorbed at $-a$}|X_0=i \wedge X_1 = i-1)\pr(X_1=i-1 | X_0 = i)\\
+&\quad\quad\quad+ \pr(\mbox{absorbed at $-a$}|X_0=i \wedge X_1 = i-1)\pr(X_1=i-1
+| X_0 = i)\\
 &= r_{i+1}\pr(X_1=i+1 | X_0 = i)+r_{i-1}\pr(X_1=i-1 | X_0 = i)\\
 \implies r_i &= \frac{r_{i+1}+r_{i-1}}{2}
 \end{align*}
-This holds for $-a < i < b$. We have that $r_{-a} =1$ and $r_b = 0$, since the probability of being absorbed at $-a$ given we start at $-a$ is 1, and similar reasoning gives the opposite result for $b$.
+This holds for $-a < i < b$. We have that $r_{-a} =1$ and $r_b = 0$, since the
+probability of being absorbed at $-a$ given we start at $-a$ is 1, and similar
+reasoning gives the opposite result for $b$.
 \begin{align*}
 r_i &= \frac{r_{i+1}+r_{i-1}}{2}\\
 r_{-a} &= 1\\
@@ -411,30 +472,42 @@ r_0 = \frac{b-0}{a+b} = \frac{b}{a+b}
 $$
 \end{enumerate}
 \item
-This process is markovian, since the distribution of the propotion of reds in the deck after drawing depends only on the proportion before drawing.
+This process is markovian, since the distribution of the propotion of reds in
+the deck after drawing depends only on the proportion before drawing.
 $$
 \mathbb{E}(X_{n+1} - X_n | \underline{X} = \underline{x})
 $$
-Suppose $x_n = \frac{R_n}{M-n}$, where $R_n$ is the number of red cards in the deck at time $n$, so $\mathbb{E}(X_{n+1} - X_n | \underline{X} = \underline{x}) = \mathbb{E}(X_{n+1} - \frac{R_n}{M-n}| X_n = \frac{R_n}{M-n})$.
+Suppose $x_n = \frac{R_n}{M-n}$, where $R_n$ is the number of red cards in the
+deck at time $n$, so $\mathbb{E}(X_{n+1} - X_n | \underline{X} = \underline{x})
+= \mathbb{E}(X_{n+1} - \frac{R_n}{M-n}| X_n = \frac{R_n}{M-n})$.
 $$
-\mathbb{E}(X_{n+1} | X_n = \frac{R_n}{M-n}) = \frac{R_n-1}{M-n-1}\pr\left(X_{n+1} = \frac{R_n-1}{M-n-1}\right) + \frac{R_n}{M-n-1} \pr \left( X_{n+1} = \frac{R_n}{M-n-1}\right)
+\mathbb{E}(X_{n+1} | X_n = \frac{R_n}{M-n}) =
+\frac{R_n-1}{M-n-1}\pr\left(X_{n+1} = \frac{R_n-1}{M-n-1}\right) +
+\frac{R_n}{M-n-1} \pr \left( X_{n+1} = \frac{R_n}{M-n-1}\right)
 $$
-$X_{n+1} = \frac{R_n-1}{M-n-1}$ corresponds to turning over a red card which, given $X_n = \frac{R_n}{M-n}$, has probability $\frac{R_n}{M-n}$.
+$X_{n+1} = \frac{R_n-1}{M-n-1}$ corresponds to turning over a red card which,
+given $X_n = \frac{R_n}{M-n}$, has probability $\frac{R_n}{M-n}$.
 
-$X_{n+1} = \frac{R_n}{M-n-1}$ corresponds to turning over a black card which, given $X_n = \frac{R_n}{M-n}$, has probability $\frac{M-n-R_n}{M-n}$, so
+$X_{n+1} = \frac{R_n}{M-n-1}$ corresponds to turning over a black card which,
+given $X_n = \frac{R_n}{M-n}$, has probability $\frac{M-n-R_n}{M-n}$, so
 \begin{align*}
-\mathbb{E}(X_{n+1}) &= \frac{R_n-1}{M-n-1}\frac{R_n}{M-n} + \frac{R_n}{M-n-1} \frac{M-n-R_n}{M-n}\\
+\mathbb{E}(X_{n+1}) &= \frac{R_n-1}{M-n-1}\frac{R_n}{M-n} + \frac{R_n}{M-n-1}
+\frac{M-n-R_n}{M-n}\\
 &= \frac{R_n^2 - R_n + MR_n - nR_n - R_n^2}{(M-n)(M-n-1)}\\
 &= \frac{R_n(M-n-1)}{(M-n)(M-n-1)}\\
 &= \frac{R_n}{M-n}
 \end{align*}
 So, finally
 \begin{align*}
-\mathbb{E}(X_{n+1}-X_n | \underline{X} = \underline{x}) &= \mathbb{E}\left(X_n+1|X_n = \frac{R_n}{M-n}\right) - \frac{R_n}{M-n}\\
+\mathbb{E}(X_{n+1}-X_n | \underline{X} = \underline{x}) &=
+\mathbb{E}\left(X_n+1|X_n = \frac{R_n}{M-n}\right) - \frac{R_n}{M-n}\\
 &= \frac{R_n}{M-n} - \frac{R_n}{M-n}\\
 &= 0
 \end{align*}
-The above calculation also gave us that, if $X_n$ is finite, $X_{n+1}$ is also finite, and we also know that $X_0$ is finite, so induction gives us that $X_n$ is finite for all $n$, so $\{X_n\}$ is finite, and therefore a martingale with respect to itself.
+The above calculation also gave us that, if $X_n$ is finite, $X_{n+1}$ is also
+finite, and we also know that $X_0$ is finite, so induction gives us that $X_n$
+is finite for all $n$, so $\{X_n\}$ is finite, and therefore a martingale with
+respect to itself.
 \end{enumerate}
 \end{enumerate}
 \clearpage
@@ -497,7 +570,8 @@ We also have that $G_j(G_1(s)) = G_1(G_j(s))$.
 \begin{align*}
 e &= \lim_{j\rightarrow\infty}G_j(0)\\
 &= \lim_{j\rightarrow\infty}G_1(G_{j-1}(0))\\
-&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity of G}\\
+&= G_1\left(\lim_{j\rightarrow\infty}G_{j-1}(0)\right)\mbox{\;\; by continuity
+of G}\\
 &= G_1(e)
 \end{align*}
 So $e = G_1(e)$.
@@ -559,7 +633,8 @@ Where $N(t) \sim Po(\lambda t)$, $\pr(N(t)=n) = \frac{e^{-\lambda t}(\lambda
 t)^n}{n!}$, so
 \begin{align*}
 p_n'(t) &= \frac{d}{dt} \frac{e^{-\lambda t}(\lambda t)^n}{n!}\\
-&= \frac{-\lambda e^{-\lambda t}(\lambda t)^n + n \lambda e^{-\lambda t}(\lambda t)^{n-1}}{n!}\\
+&= \frac{-\lambda e^{-\lambda t}(\lambda t)^n + n \lambda e^{-\lambda t}(\lambda
+t)^{n-1}}{n!}\\
 &= -\lambda \left( \frac{e^{-\lambda t}(\lambda t)^n}{n!} - \frac{e^{-\lambda 
 t}(\lambda t)^{n-1}}{(n-1)!}\right)\\
 &= -\lambda(p_n(t) - p_{n-1}(t))
@@ -630,8 +705,7 @@ recurrence relation for $r_i$, so assume $r_i = \theta^i$, so
 solution}\\
 &\implies \theta = 1 \mbox { twice}
 \end{align*}
-This gives us that $r_i = A\theta^i +Bi\theta^i = A+Bi$. Our values for $r_{-a}$
-and $r_b$ give us that
+This gives us that $r_i = A\theta^i +Bi\theta^i = A+Bi$. Our values for $r_{-a}$and $r_b$ give us that
 \begin{align*}
 A-aB &= 1\\
 A+bB &= 0\\
@@ -644,11 +718,9 @@ Substituting in $i=0$ gives the desired result.
 \item
 Let $s_k = \pr (X_n = 0 \wedge \forall k<n X_k \neq 0 \wedge \forall 1<l<n X_l
 \neq K, -K | X_0 = k)$. $s_k$ is the probability that we return to 0 before
-hitting either $K$ or $-K$. We want to find $s_0$. From similar logic to before,
-we have that $s_0 = \frac{s_{-1}+s_1}{2}$.
+hitting either $K$ or $-K$. We want to find $s_0$. From similar logic to before,we have that $s_0 = \frac{s_{-1}+s_1}{2}$.
 
-If the process starts by moving upwards, so $Y_0 = 1$, we have a process similar
-to before, with $a=0,b=K, X_0 =1$, so
+If the process starts by moving upwards, so $Y_0 = 1$, we have a process similarto before, with $a=0,b=K, X_0 =1$, so
 \begin{align*}
 s_1 = r_1 &= \frac{b-1}{a+b}\\
 &= \frac{K-1}{K}
@@ -728,24 +800,37 @@ $\mathbb{E}(Y_1) = \frac{-4}{7}$, so
 \item
 Where $\underline{Y} = (Y_0,\dots,Y_n)$, $\underline{y} = (y_0,\dots,y_n)$.
 
-$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time $n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time wrt $\{X_n\}$ such that
+$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time
+$n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping
+theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time
+wrt $\{X_n\}$ such that
 \begin{align*}
 &\exists c \in \mathbb{R} \st \pr(T<c) = 1\\
-\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c \,\,\forall n \leqslant T]\\
-\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st \mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
+\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c
+\,\,\forall n \leqslant T]\\
+\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st
+\mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
 \end{align*}
 Then $ \mathbb{E}(X_T) = \mathbb{E}(X_0)$
 \item (Solution donated by Emma Titcomb)
 
-First, suppose $n \leqslant T$. We have that $-4 \leqslant S_n \leqslant 5$, so $2^{-4} \leqslant X_n \leqslant 2^5$, giving us that $X_n$ is finite for $n \leqslant T$. By assumption, $\pr (T< \infty) = 1$, so $\{X_n\}$ satisfies the properties of the optional stopping theorem.
+First, suppose $n \leqslant T$. We have that $-4 \leqslant S_n \leqslant 5$, so
+$2^{-4} \leqslant X_n \leqslant 2^5$, giving us that $X_n$ is finite for $n
+\leqslant T$. By assumption, $\pr (T< \infty) = 1$, so $\{X_n\}$ satisfies the
+properties of the optional stopping theorem.
 
 $$
-\mathbb{E}(X_T) = p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T \geqslant 4)
+\mathbb{E}(X_T) = p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T
+\geqslant 4)
 $$
 
-$S_T \geqslant 4 \implies S_T = 4 \vee S_T = 5$, since the process only moves upwards in steps of 2, so $E(X_T | S_T \geqslant 4) \geqslant 2^4$. We also have that $ \mathbb{E}(X_T | S_T = -4) = 2^{-4}$, and that $\mathbb{E}(X_T) = \mathbb{E}(X_0)$, so
+$S_T \geqslant 4 \implies S_T = 4 \vee S_T = 5$, since the process only moves
+upwards in steps of 2, so $E(X_T | S_T \geqslant 4) \geqslant 2^4$. We also have
+that $ \mathbb{E}(X_T | S_T = -4) = 2^{-4}$, and that $\mathbb{E}(X_T) =
+\mathbb{E}(X_0)$, so
 \begin{align*}
-\mathbb{E}(X_T) &= p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T \geqslant 4)\\
+\mathbb{E}(X_T) &= p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T
+\geqslant 4)\\
 \implies 1 &= 2^{-4}p + (1-p)\mathbb{E}(X_T | S_T \geqslant 4)\\
 \implies 1 &\leqslant 2^{-4}p + (1-p)2^4\\
 \implies 2^4 &\leqslant p + 2^8 - 2^8p\\
@@ -761,8 +846,7 @@ $S_T \geqslant 4 \implies S_T = 4 \vee S_T = 5$, since the process only moves up
 \begin{enumerate}
 \item
 \begin{enumerate}
-\item A state, $j$, is recurrent if the probability of travelling from state $j$
-to $j$ in some length of time is $1$. $j$ is positive recurrent if $\mu_{jj}$,
+\item A state, $j$, is recurrent if the probability of travelling from state $j$to $j$ in some length of time is $1$. $j$ is positive recurrent if $\mu_{jj}$,
 the expected time between returns, is finite.
 
 \item A stationary distribution is a vector, $\underline{\pi}$, satisfying:
@@ -804,8 +888,7 @@ single closed communicating class.
 The chain consists of a single, irreducible, finite closed communicating class,
 so all states must be positive recurrent.
 \item
-We can see that there are exactly two cycles for state 1, namely $(1,2,4,1)$ and
-$(1,3,5,1)$. Both of these cycles are of order 3, so
+We can see that there are exactly two cycles for state 1, namely $(1,2,4,1)$ and$(1,3,5,1)$. Both of these cycles are of order 3, so
 \begin{align*}
 d_1 &= hcf\{3,6,9,12,\dots\}\\
 &= 3
@@ -833,7 +916,8 @@ $\pi_4$ and $\pi_5$ would satisfy (1). We can then reqrite everything as:
 \pi_4 &= \alpha\pi_1 \\
 \pi_5 &= (1-\alpha)\pi_1 
 \end{align*}
-We also require that $\sum\limits^5_{i=1}\pi_i=1$, so $3\pi_1 = 1$, and $\pi_1 =\frac{1}{3}$.
+We also require that $\sum\limits^5_{i=1}\pi_i=1$, so $3\pi_1 = 1$, and $\pi_1
+=\frac{1}{3}$.
 $$
 \underline{\pi} =
 \left(\frac{1}{3},\frac{\alpha}{3},\frac{1-\alpha}{3},\frac{\alpha}{3},\frac{1-\alpha}{3}\right)
@@ -856,8 +940,7 @@ $p_{ii}=0$}\\
 \end{align*}
 So $\underline{\mu}$ satisfies $\underline{\mu}P = \underline{\mu} \wedge
 ||\underline{\mu}||_1 = 1$, and is therefore a stationary distribution for $P$.
-All of these steps will also work backwards, so stationary distributions for $P$
-are also stationary distributions for $Q$.
+All of these steps will also work backwards, so stationary distributions for $P$are also stationary distributions for $Q$.
 \begin{enumerate}
 \item
 As before, each state intercommunicates, but now state 1 has cycle $(1,1)$ of
@@ -865,8 +948,7 @@ order 1, so $d_1|1$ and $d_1 | 3$, hence $d_1 =1$, since 1 and 3 are coprime.
 Similar logic to before will give us that $\forall i \in S, d_i = 1$, so the
 chane is aperiodic.
 \item
-Since the chain is aperiodic, a limiting distribution exists and is equal to the
-stationary distribution, namely:
+Since the chain is aperiodic, a limiting distribution exists and is equal to thestationary distribution, namely:
 $$
 \underline{\pi} =
 \left(\frac{1}{3},\frac{\alpha}{3},\frac{1-\alpha}{3},\frac{\alpha}{3},\frac{1-\alpha}{3}\right)
