@@ -228,9 +228,64 @@ q_m(t+h) &= \pr(M(t+h) = m | M(t) = m)\pr(M(t)=m)\\
 \end{align*}
 And that's about all I got. If we send $t$ off to infinity, we get a nice homogeneous equation to solve which should come out nice and quadratic and solvable, but making it look like the template we've been given is somewhat harder, making me suspect that this isn't quite right. One thing I haven't tried yet is just putting the tempate in and trying to brute force some constants out of it. Getting 2 variables from 1 equation sounds Fun, but maybe something nice happens if you try it.
 \end{enumerate}
-\item The solutions I've got on paper for this are no good. I'll re-do them tomorrow
+\item 
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item
+A recurrent state, $j$, is a state where $f_{jj}$, the probability of ever returning to $j$ having left it, is 1.
 
-\item OK, SRWs and Martingales, back into nice territory...
+A state is null-recurrent if it is recurrent and $\mu_{jj}$, the expected time between returns, is infinite.
+
+A state is positive recurrent if it is recurrent and $\mu_{jj}$ is finite.
+
+\item
+$\underline{\pi}$ is a stationary distribution $\iff$ $\underline{\pi}$ satisfies
+\begin{align*}
+&\underline{\pi}P = \underline{\pi}\\
+\wedge &\sum_{j \in S} \pi_j = 1\\
+\wedge & \forall j \in S, \pi_j > 0
+\end{align*}
+\item 
+We have already that $\pr (X_0 = i) = \pi_i$.  We also have that $\pr (X_n = j | X_{n-1} = i) = p_{ij}$, and by taking single elements from the identity $\underline{\pi}P = \underline{\pi}$, we have that $\pi_j = \sum\limits_{i\in S}p_{ij}\pi_i$.
+
+Assume $\pr (X_{n} =i) = \pi_i \forall n \in \{1\dots k-1\}$ and consider $\pr(X_k = j)$
+\begin{align*}
+\pr(X_k = j) &= \sum_{i \in S} \pr (X_k = j | X_{k-1} = i) \pr (X_{k-1} = i)\\
+&= \sum_{i \in S} p_{ij} \pi_i \mbox{\quad by assumption}\\
+&= \pi_j
+\end{align*}
+So $\pr(X_0 = j) = \pi_j$ by construction, and $\pr(X_{k-1}=j)=\pi_j \implies \pr (X_k = j) = \pi_j$, so by induction $\forall k \in \mathbb{N}, \pr(X_0 = j) = \pi_j \implies \pr (X_k = j) = \pi_j$, as required.
+\item
+A solution for this (and the rest of these questions) is provided at \url{http://bit.ly/K7Bmqf}, though I don't actually understand it well enough to type up my own version of it. I'll have another read through it later and give my take on it when I can.
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+Suppose $\underline{\pi}P = \underline{\pi}$.
+\begin{align*}
+\implies \pi_0 &= \sum^\infty_{n=0} \frac{n+1}{n+2}\pi_n\\
+\pi_n &= \frac{\pi_{n-1}}{n+1} = \frac{\pi_0}{(n+1)!}
+\end{align*}
+Also, $\sum\limits_{n=0}^\infty\pi_n = 1$, so
+\begin{align*}
+1 &= \pi_0\sum^\infty_{n=0}\frac{1}{(n+1)!}\\
+&= \pi_0 (\sum^\infty_{n=0} [\frac{1^n}{n!}] -1])\\
+&= \pi_0 (e-1)\\
+\implies \pi_0 &= \frac{1}{e-1}\\
+\pi_n &= \frac{1}{(e-1)(n+1)!}
+\end{align*}
+So the chain has a stationary distribution, and is irreducible, so all states are positive recurrent from (iv)
+\item
+The long run proportion of time spent in state $j$ is given by $\pi_j$, and the mean time between returns to state $j$ is given by $\pi_j^{-1}$, so
+\begin{align*}
+\pi_0 &= \frac{1}{e-1}\\
+\frac{1}{\pi_0} &= e-1
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+
+\item
 \begin{enumerate}
 \item
 \begin{enumerate}
