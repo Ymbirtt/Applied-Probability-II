@@ -171,6 +171,7 @@ So $e = G_1(e)$.
 \begin{enumerate}
 \item (Solution contributed by Lauren Sarioglu, because the one I wrote was wrong
  in many hilarious ways)
+
 To find $e$ solve $e=G(e)$,
 \begin{align*}
 17e&=3+9e^2+5e^3\\
@@ -180,12 +181,19 @@ To find $e$ solve $e=G(e)$,
 Thus $e=1, e=-3,e=\frac{1}{5}$ are possible solutions
 
 e is the smallest positive solution, so $e=\frac{1}{5}$
-\item
-I had a crack at this, and then immediately stopped when the slightly hideous
-generating function for $G_0(s)$ appeared. This is probably doable by modelling
-this new process as a series of 10 independent processes, conditioning on the
-value of $N_0$, then summing up, but I've not yet had the time to make another
-attempt. Contribute and be awesome etc.
+\item (Solution contributed by Lauren Sarioglu)
+
+Each initial member can be thought of as an individual branching process, so
+(taking $x$ to be the number of initial members) the $ \pr(Extinction | N_0=x) =
+e^x)$
+The number of inital members is $Binomial(10,\frac{1}{2})$. Let $e'$ denote the probability of eventual extinction for all branches
+\begin{align*}
+e'&=\sum^{10}_{x=0} p_X(x) e^x\\
+&=\sum^{10}_{x=0} {10 \choose x} \left(\frac{1}{2}\right)^x \left(\frac{1}{2}\right)^{10-x} e^x\\
+&= \left(\frac{1}{2}\right)^{10} \sum^{10}_{x=0} {10 \choose x} e^x\\
+&=\left(\frac{1}{2}\right)^{10} (1+e)^{10}\\
+&=\left(\frac{3}{5}\right)^{10}
+\end{align*}
 \end{enumerate}
 \end{enumerate}
 \item
