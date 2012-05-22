@@ -726,9 +726,33 @@ $\mathbb{E}(Y_1) = \frac{-4}{7}$, so
 \item
 \begin{enumerate}
 \item
-\item Again, not sure on this one. I note that $\frac{240}{255} =
-\frac{2^8-2^4}{2^8-2^0}$, which could be handy since we're dealing with powers
-of 2, but beyond that I don't know how to approach it. Contribute! Be bold!
+Where $\underline{Y} = (Y_0,\dots,Y_n)$, $\underline{y} = (y_0,\dots,y_n)$.
+
+$T$ is a stopping time wrt ${Y_n}\iff$ the occurance or otherwise of $T$ by time $n$ can be determined by the values of $(y_0,\dots,y_n)$. The optional stopping theorem states that, where $\{X_n\}$ is a martingale and $T$ is a stopping time wrt $\{X_n\}$ such that
+\begin{align*}
+&\exists c \in \mathbb{R} \st \pr(T<c) = 1\\
+\vee &[ \pr (T< \infty) =1 \wedge \exists c \in \mathbb{R} \st |X_n| \leqslant c \,\,\forall n \leqslant T]\\
+\vee &[\mathbb{E}(T) < \infty \wedge \exists c \in \mathbb{R} \st \mathbb{E}(|X_{n+1} - X_n| | X_n) < c]
+\end{align*}
+Then $ \mathbb{E}(X_T) = \mathbb{E}(X_0)$
+\item (Solution donated by Emma Titcomb)
+
+First, suppose $n \leqslant T$. We have that $-4 \leqslant S_n \leqslant 5$, so $2^{-4} \leqslant X_n \leqslant 2^5$, giving us that $X_n$ is finite for $n \leqslant T$. By assumption, $\pr (T< \infty) = 1$, so $\{X_n\}$ satisfies the properties of the optional stopping theorem.
+
+$$
+\mathbb{E}(X_T) = p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T \geqslant 4)
+$$
+
+$S_T \geqslant 4 \implies S_T = 4 \vee S_T = 5$, since the process only moves upwards in steps of 2, so $E(X_T | S_T \geqslant 4) \geqslant 2^4$. We also have that $ \mathbb{E}(X_T | S_T = -4) = 2^{-4}$, and that $\mathbb{E}(X_T) = \mathbb{E}(X_0)$, so
+\begin{align*}
+\mathbb{E}(X_T) &= p \mathbb{E}(X_T|S_T = -4) + (1-p) \mathbb{E}(X_T | S_T \geqslant 4)\\
+\implies 1 &= 2^{-4}p + (1-p)\mathbb{E}(X_T | S_T \geqslant 4)\\
+\implies 1 &\leqslant 2^{-4}p + (1-p)2^4\\
+\implies 2^4 &\leqslant p + 2^8 - 2^8p\\
+\implies 2^4 - 2^8 &\leqslant p(1-2^8)\\
+\implies p &\geqslant \frac{2^4-2^8}{1-2^8}\\
+\implies p &\geqslant \frac{2^8-2^4}{2^8-1} = \frac{240}{255}
+\end{align*}
 \end{enumerate}
 
 \end{enumerate}
