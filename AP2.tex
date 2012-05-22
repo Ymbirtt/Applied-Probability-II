@@ -169,8 +169,8 @@ So $e = G_1(e)$.
 \end{enumerate}
 \item
 \begin{enumerate}
-\item (Solution contributed by Lauren Sarioglu, because the one I wrote was wrong in
-many hilarious ways)
+\item (Solution contributed by Lauren Sarioglu, because the one I wrote was wrong
+ in many hilarious ways)
 To find $e$ solve $e=G(e)$,
 \begin{align*}
 17e&=3+9e^2+5e^3\\
@@ -178,28 +178,8 @@ To find $e$ solve $e=G(e)$,
 &=(e-1)(e+3)(5e-1)
 \end{align*}
 Thus $e=1, e=-3,e=\frac{1}{5}$ are possible solutions
+
 e is the smallest positive solution, so $e=\frac{1}{5}$
-$$
-G(s) = \frac{1}{17}(3+9s^2+5s^3)
-$$
-Let $e=G(e)$
-\begin{align*}
-\implies e &= \frac{1}{17}(3+9e^2+5e^3)\\
-\implies 0 &= \frac{1}{17}(5e^3+9e^2-14)\\
-&= (e-1)(5e^2+14e-14)\\
-\end{align*}
-So $e=1$ is one solution, and the other two solutions can be found through the
-quadratic formula, giving:
-$$
-e=\frac{-14\pm\sqrt{476}}{10},\quad e=1
-$$
-$21^2=441$ and $22^2=484$, so $\sqrt{476} \in (21,22)$. The probability of
-eventual extinction is the smallest solution to $e=G(e)$, namely
-$$
-\frac{-14+\sqrt{476}}{10} \in \left(\frac{7}{10},\frac{8}{10}\right)
-$$
-This looks like an oddly messy solution, so I may have done something terminally
-stupid here. Alternative suggestions welcome.
 \item
 I had a crack at this, and then immediately stopped when the slightly hideous
 generating function for $G_0(s)$ appeared. This is probably doable by modelling
