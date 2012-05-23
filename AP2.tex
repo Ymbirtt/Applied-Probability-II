@@ -200,7 +200,7 @@ e'&=\sum^{10}_{x=0} p_X(x) e^x\\
 \begin{enumerate}
 \item
 A continuous time process with stationary, independent increments,
-such that for $t>0$, $h>0$, $n \in \mathbb{N}^+$
+such that for $t>0$, $h>0$, $n \in \mathbb{N}^{+}$
 \begin{align*}
 \pr (N(t+h) < n | N(t) = n) &= 0\\
 \pr (N(t+h) = n | N(t) = n) &= 1-\lambda(h) + o(h)\\
@@ -623,7 +623,7 @@ $$
 \begin{enumerate}
 \item
 A continuous time process with stationary, independent increments,
-such that for $t>0$, $h>0$, $n \in \mathbb{N}^+$
+such that for $t>0$, $h>0$, $n \in \mathbb{N}^{+}$
 \begin{align*}
 \pr (N(t+h) < n | N(t) = n) &= 0\\
 \pr (N(t+h) = n | N(t) = n) &= 1-\lambda(h) + o(h)\\
@@ -672,14 +672,30 @@ If we let $\lambda = \mu p$, exactly the same argument as before holds, so
 $N(t)\sim Po(\mu p t)$, and $\mathbb{E}(N(t)) = \mu p t$ by properties of the
 poisson.
 \item
-I'm really not sure on this answer. Correct it if you find anything wrong.
+Following a really useful email conversation with Carl Martyres, I've been able to
+make a little progress on this one. I'm still not completely comfortable with it, 
+but here goes.
 
 $\pr (D(t) = k+m | N(t) = k) = \pr(D(t)-N(t)=m | N(t)=k)$ is the probability
-that exactly $m$ decays go undetected given we have detected $k$ decays. The
-detection of decays is independent of all other variables, so the non-detection
-of $m$ decays is given by $(1-p)^m$. $\pr(D(t)-N(t)=m)=(1-p^m)$ by the same
-logic, so $\pr(D(t)-N(t)=m)=\pr(D(t)-N(t)=m|N(t)=k)$, so $D(t)-N(t)$ is
-independent from $N(t)$.
+that exactly $m$ decays go undetected given we have detected $k$ decays by time t.
+Since the number of decays by time $t$ follows a $Po(\mu pt)$ distribution, by 
+reversing the process we also have that the number of decays not detected follows
+a $Po((1-p)\mu t)$ distribution, so 
+$$
+\pr (D(t)-N(t) = m | N(t) = k) = \frac{e^{-(1-p)\mu t}((1-p)\mu t)^m}{m!}
+$$
+
+The resulting equation, however, does not depend on $k$, so by partitioning on $k$ 
+we have that
+\begin{align*}
+\pr (D(t)-N(t) = m)&= \sum_{k=0}^\infty \pr(D(t)-N(t)=m | N(t) = k)\pr(N(t) = k)\\
+&= \frac{e^{-(1-p)\mu t}((1-p)\mu t)^m}{m!}\sum_{k=0}^\infty \pr(N(t) = k)\\
+&= \frac{e^{-(1-p)\mu t}((1-p)\mu t)^m}{m!}\\
+&= \pr (D(t)-N(t) = m | N(t) = k)
+\end{align*}
+
+So $\pr (D(t)-N(t) = m)=\pr (D(t)-N(t) = m | N(t) = k)$, so $D(t)-N(t)$ and $N(t)$
+are independent.
 \end{enumerate}
 \end{enumerate}
 \clearpage
