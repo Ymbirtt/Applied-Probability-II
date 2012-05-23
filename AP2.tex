@@ -199,10 +199,14 @@ e'&=\sum^{10}_{x=0} p_X(x) e^x\\
 \item
 \begin{enumerate}
 \item
-
-A continuous time counting process with stationary, independent increments,
-where the number of increments in time $t$ follows a $Po(\lambda t)$
-distribution.
+A continuous time process with stationary, independent increments,
+such that for $t>0$, $h>0$, $n \in \mathbb{N}^+$
+\begin{align*}
+\pr (N(t+h) < n | N(t) = n) &= 0\\
+\pr (N(t+h) = n | N(t) = n) &= 1-\lambda(h) + o(h)\\
+\pr (N(t+h) = n+1 | N(t) = n) &= \lambda(h) + o(h)\\
+\pr (N(t+h) > n+1 | N(t) = n) &= o(h)
+\end{align*}
 \item
 \begin{align*}
 p_n(t+h) &= \pr(N(t+n)=n | N(t) = n-1)\pr(N(t)=n-1) + \pr(N(t+n)=n | N(t) =
@@ -618,9 +622,14 @@ $$
 \item
 \begin{enumerate}
 \item
-A continuous time counting process with stationary, independent increments,
-where the number of increments in time $t$ follows a $Po(\lambda t)$
-distribution.
+A continuous time process with stationary, independent increments,
+such that for $t>0$, $h>0$, $n \in \mathbb{N}^+$
+\begin{align*}
+\pr (N(t+h) < n | N(t) = n) &= 0\\
+\pr (N(t+h) = n | N(t) = n) &= 1-\lambda(h) + o(h)\\
+\pr (N(t+h) = n+1 | N(t) = n) &= \lambda(h) + o(h)\\
+\pr (N(t+h) > n+1 | N(t) = n) &= o(h)
+\end{align*}
 \item
 \begin{align*}
 p_n(t+h) &= \pr(N(t+n)=n | N(t) = n-1)\pr(N(t)=n-1) + \pr(N(t+n)=n | N(t) =
